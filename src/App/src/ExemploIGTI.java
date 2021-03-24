@@ -12,16 +12,16 @@ import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.*;
 
 
-public class Job01 extends Configured implements Tool
+public class ExemploIGTI extends Configured implements Tool
 {
   public static void main (final String[] args) throws Exception {
-      int res = ToolRunner.run(new Configuration(), new Job01(), args);
+      int res = ToolRunner.run(new Configuration(), new ExemploIGTI(), args);
       System.exit(res);
   }
 
   public int run (final String[] args) throws Exception {
       try{
-          JobConf conf = new JobConf(getConf(), Job01.class);
+          JobConf conf = new JobConf(getConf(), ExemploIGTI.class);
           conf.setJobName("Exemplo IGTI - Media");
 
           final FileSystem fs = FileSystem.get(conf);
