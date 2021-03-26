@@ -25,7 +25,7 @@ public class JobQuantitativo {
             String[] list = value.toString().split("\\\",\\\"");
 
             String county = list[3].trim();
-            String price = list[4].trim().replace("�", "");
+            String price = list[4].trim();
     
             Text txtChave = new Text();
             Text txtValor = new Text();
