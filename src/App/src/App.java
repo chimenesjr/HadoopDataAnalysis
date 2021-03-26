@@ -18,18 +18,7 @@ public class App extends Configured implements Tool {
 
     public int run(final String[] args) throws Exception {
         try {
-            JobConf conf = new JobConf(getConf(), App.class);
-
-            final FileSystem fs = FileSystem.get(conf);
-            Path diretorioEntrada = new Path("DataIn" + UUID.randomUUID().toString()), diretorioSaida = new Path("DataOut" + UUID.randomUUID().toString());
-
-            if (!fs.exists(diretorioEntrada))
-                fs.mkdirs(diretorioEntrada);
-
-            fs.copyFromLocalFile(new Path("/usr/local/hadoop/App/data/PPR-ALL.csv"), diretorioEntrada);
-
-            FileInputFormat.setInputPaths(conf, diretorioEntrada);
-            FileOutputFormat.setOutputPath(conf, diretorioSaida);
+            JobConf conf = getJobConf();
 
             conf.setOutputKeyClass(Text.class);
             conf.setOutputValueClass(Text.class);
@@ -42,4 +31,22 @@ public class App extends Configured implements Tool {
         }
         return 0;
     }
+
+    private JobConf getJobConf() {
+
+      JobConf conf = new JobConf(getConf(), App.class);
+
+      final FileSystem fs = FileSystem.get(conf);
+      Path diretorioEntrada = new Path("DataIn" + UUID.randomUUID().toString()), diretorioSaida = new Path("DataOut" + UUID.randomUUID().toString());
+
+      if (!fs.exists(diretorioEntrada))
+          fs.mkdirs(diretorioEntrada);
+
+      FileInputFormat.setInputPaths(conf, diretorioEntrada);
+      FileOutputFormat.setOutputPath(conf, diretorioSaida);
+
+      fs.copyFromLocalFile(new Path("/usr/local/hadoop/App/data/PPR-ALL.csv"), diretorioEntrada);
+
+      return conf;
+    } 
 }
