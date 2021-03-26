@@ -25,7 +25,6 @@ public class JobQuantitativo {
             System.out.println("***************** JOB QUANTITATIVO MAP STARTED ***************");
             System.out.println("VALUE: " + value.toString());
 
-            // String[] list = value.toString().split("\\\",\\\"");
             String[] list = value.toString().split("\",\"");
 
             System.out.println("Quant: " + list.length);
@@ -33,7 +32,7 @@ public class JobQuantitativo {
             System.out.println("Part 4: " + list[4]);
 
             String county = list[3].trim();
-            String price = list[4].trim();
+            String price = list[4].trim().replace("?", "");
     
             Text txtChave = new Text();
             Text txtValor = new Text();
