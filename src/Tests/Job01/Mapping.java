@@ -21,10 +21,10 @@ public class Mapping {
 
     public void map(String key, String value, OutputCollector<Text, Text> output) {
 
-        var list = value.replace("\"", "").split(",");
+        String[] list = value.replace("\"", "").split(",");
 
-        var county = list[3].trim();
-        var price = list[4].trim();
+        String county = list[3].trim();
+        String price = list[4].trim();
 
         Text txtChave = new Text();
         Text txtValor = new Text();
