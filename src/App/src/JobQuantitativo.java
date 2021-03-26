@@ -15,7 +15,6 @@ import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.*;
-import org.w3c.dom.Text;
 
 public class JobQuantitativo {
 
@@ -24,7 +23,7 @@ public class JobQuantitativo {
         public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
 
             System.out.println(value.toString());
-            
+
             // String[] list = value.toString().split("\\\",\\\"");
             String[] list = value.toString().split("\",\"");
 
