@@ -19,6 +19,7 @@ public class App extends Configured implements Tool {
     public int run(final String[] args) throws Exception {
         try {
             JobConf conf = new JobConf(getConf(), App.class);
+            conf.setJobName("HDA - Job Quantitativo");
 
             final FileSystem fs = FileSystem.get(conf);
             Path diretorioEntrada = new Path("DataIn" + UUID.randomUUID().toString()), diretorioSaida = new Path("DataOut" + UUID.randomUUID().toString());
