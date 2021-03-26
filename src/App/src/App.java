@@ -39,7 +39,7 @@ public class App extends Configured implements Tool {
             conf.setReducerClass(HDA.JobQuantitativo.Reduce.class);
             JobClient.runJob(conf);
 
-            // fs.copyToLocalFile(diretorioSaida, new Path("/usr/local/hadoop/App/data/"));
+            fs.copyToLocalFile(diretorioSaida, new Path("/usr/local/hadoop/App/data/"));
 
         } catch (Exception e) {
             throw e;
