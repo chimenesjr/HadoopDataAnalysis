@@ -6,25 +6,27 @@ import java.util.*;
 import java.util.Random;
 import java.text.*;
 
-import HDA.MapIGTI;
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.*;
 
-public static class MapIGTI extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
+public class MapIGTI {
 
-    public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter)  throws IOException {
-        Text txtChave = new Text();
-        Text txtValor = new Text();
+    public static class MapIGTIMap extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
 
-        String codigoCliente = value.toString().substring(58, 61);
-        String qtdeItens = value.toString().substring(76, 84);
-        txtChave.set(codigoCliente);
-        txtValor.set(qtdeItens);
+        public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+            Text txtChave = new Text();
+            Text txtValor = new Text();
 
-        output.collect(txtChave, txtValor);
+            String codigoCliente = value.toString().substring(58, 61);
+            String qtdeItens = value.toString().substring(76, 84);
+            txtChave.set(codigoCliente);
+            txtValor.set(qtdeItens);
 
+            output.collect(txtChave, txtValor);
+
+        }
     }
 }
