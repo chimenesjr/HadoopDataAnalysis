@@ -41,7 +41,7 @@ public class App extends Configured implements Tool {
 
             // fs.copyToLocalFile(diretorioSaida, new Path("/usr/local/hadoop/App/data/"));
 
-            conf.set("fs.defaultFS", "hdfs://localhost:9000/user/hadoop/");
+            // conf.set("fs.defaultFS", "hdfs://localhost:9000/user/hadoop/");
             FileSystem fs2 = FileSystem.get(conf);
             FileStatus[] status = fs2.listStatus(diretorioSaida);
             for(int i=0; i < status.length; i++) {
