@@ -38,7 +38,7 @@ public class App extends Configured implements Tool
   
             conf.setOutputKeyClass(Text.class);     
             conf.setOutputValueClass(Text.class);   
-            conf.setMapperClass(MapIGTI.class);
+            conf.setMapperClass(MapIGTI.MapIGTIMap.class);
             conf.setReducerClass(ReduceIGTI.class);
             JobClient.runJob(conf);   
                                           
