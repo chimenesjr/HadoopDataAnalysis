@@ -21,7 +21,7 @@ public class Mapping {
 
     public void map(String key, Text value, OutputCollector<Text, Text> output) {
 
-        String[] list = value.toString().split("\\\",\\\"");
+        String[] list = value.toString().split("\",\"");
 
         System.out.println("Quant: " + list.length);
 
