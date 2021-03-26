@@ -20,7 +20,7 @@ public class App extends Configured implements Tool {
         try {
             JobConf conf = new JobConf(getConf(), App.class);
 
-            this.configFolder();
+            configFolder();
 
             conf.setOutputKeyClass(Text.class);
             conf.setOutputValueClass(Text.class);
@@ -34,7 +34,7 @@ public class App extends Configured implements Tool {
         return 0;
     }
 
-    private void configFolder() {
+    public void configFolder() {
 
         final FileSystem fs = FileSystem.get(conf);
         Path diretorioEntrada = new Path("DataIn" + UUID.randomUUID().toString()), diretorioSaida = new Path("DataOut" + UUID.randomUUID().toString());
