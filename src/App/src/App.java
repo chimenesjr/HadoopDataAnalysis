@@ -40,6 +40,7 @@ public class App extends Configured implements Tool {
             JobClient.runJob(conf);
 
             fs.copyToLocalFile(diretorioSaida, new Path("/usr/local/hadoop/App/data/"));
+            
 
         } catch (Exception e) {
             throw e;
