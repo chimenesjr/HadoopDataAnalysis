@@ -43,7 +43,7 @@ public class JobQuantitativo {
             
             Text value = new Text();
 
-            var count = CountingIterator.Count(values);
+            int count = CountingIterator.Count(values);
     
             value.set(Integer.toString(count));
             output.collect(key, value);
