@@ -22,7 +22,8 @@ public class JobQuantitativo {
 
         public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
 
-            String[] list = value.toString().split("\\\",\\\"");
+            // String[] list = value.toString().split("\\\",\\\"");
+            String[] list = value.toString().split("\",\"");
 
             String county = list[3].trim();
             String price = list[4].trim();
