@@ -1,5 +1,6 @@
 package Tests.Job01;
 
+import Tests.Helpers.CountingIterator;
 import Tests.Helpers.OutputCollector;
 import Tests.Helpers.Text;
 
@@ -33,18 +34,11 @@ public class Reducing {
     
     public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, Text>output){
 
-        double sum = 0.0;
-        int quant = 0;
         Text value = new Text();
 
-        while(values.hasNext())
-        {
-            sum += Double.parseDouble(values.next().toString());
-            quant++;
-        }
+        var count = CountingIterator.Count(values);
 
-        var media = sum / quant;
-        value.set(Double.toString(media));
+        value.set(Integer.toString(count));
         output.collect(key, value);
     }
 }

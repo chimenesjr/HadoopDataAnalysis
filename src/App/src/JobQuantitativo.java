@@ -1,5 +1,7 @@
 package HDA;
 
+import HDA.Helpers.CountingIterator;
+
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
@@ -17,14 +19,18 @@ public class JobQuantitativo {
     public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
 
         public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
+
+            var list = Arrays.stream(value.replace("\"", "").split(",")).map(String::trim).toArray(String[]::new);
+
+            var county = list[3];
+            var price = list[4];
+    
             Text txtChave = new Text();
             Text txtValor = new Text();
-
-            String codigoCliente = value.toString().substring(58, 61);
-            String qtdeItens = value.toString().substring(76, 84);
-            txtChave.set(codigoCliente);
-            txtValor.set(qtdeItens);
-
+    
+            txtChave.set(county);
+            txtValor.set(price);
+    
             output.collect(txtChave, txtValor);
 
         }
@@ -33,18 +39,14 @@ public class JobQuantitativo {
     public static class Reduce extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
 
         public void reduce (Text key, Iterator<Text> values, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {                                                                                 double media = 0.0;
-            int acumuladorItens = 0, contaVendas = 0;
+            
             Text value = new Text();
 
-            while (values.hasNext()) {
-                value = values.next();
-                contaVendas++;
-                acumuladorItens += Integer.parseInt(value.toString());
-            }
-            media = acumuladorItens / (double) contaVendas;
-
-            value.set(String.valueOf(media));
+            var count = CountingIterator.Count(values);
+    
+            value.set(Integer.toString(count));
             output.collect(key, value);
+
         }
 
     }
