@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.Random;
 import java.text.*;
 import java.util.Arrays;
+import java.util.Iterator;
 
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.fs.*;

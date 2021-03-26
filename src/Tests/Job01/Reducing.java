@@ -1,14 +1,11 @@
 package Tests.Job01;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import Tests.Helpers.CountingIterator;
 import Tests.Helpers.OutputCollector;
 import Tests.Helpers.Text;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.util.Iterator;
-import java.util.List;
 
 public class Reducing {
 
