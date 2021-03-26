@@ -21,10 +21,10 @@ public class JobQuantitativo {
 
         public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
 
-            var list = Arrays.stream(value.replace("\"", "").split(","));//.map(String::trim).toArray(String[]::new);
+            var list = value.replace("\"", "").split(",");
 
-            var county = list[3];
-            var price = list[4];
+            var county = list[3].trim();
+            var price = list[4].trim();
     
             Text txtChave = new Text();
             Text txtValor = new Text();
