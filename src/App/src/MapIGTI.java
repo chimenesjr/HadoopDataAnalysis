@@ -1,6 +1,17 @@
 package HDA;
 
 import java.io.IOException;
+import java.io.*;
+import java.util.*;
+import java.util.Random;
+import java.text.*;
+
+import App.src.MapIGTI;
+import org.apache.hadoop.conf.*;
+import org.apache.hadoop.fs.*;
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.util.*;
 
 public static class MapIGTI extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
 
