@@ -42,19 +42,4 @@ public class App extends Configured implements Tool {
         }
         return 0;
     }
-
-    public void configFolder(JobConf conf) {
-
-        final FileSystem fs = FileSystem.get(conf);
-        Path diretorioEntrada = new Path("DataIn" + UUID.randomUUID().toString()), diretorioSaida = new Path("DataOut" + UUID.randomUUID().toString());
-
-        if (!fs.exists(diretorioEntrada))
-            fs.mkdirs(diretorioEntrada);
-
-        fs.copyFromLocalFile(new Path("/usr/local/hadoop/App/data/PPR-ALL.csv"), diretorioEntrada);
-
-        FileInputFormat.setInputPaths(conf, diretorioEntrada);
-        FileOutputFormat.setOutputPath(conf, diretorioSaida);
-
-    }
 }
