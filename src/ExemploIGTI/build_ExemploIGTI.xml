@@ -6,7 +6,7 @@
     </description>
 
 
-    <property name="basedir" location="/usr/local/hadoop/HDA" />
+    <property name="basedir" location="/usr/local/hadoop/ExemploIGTI" />
     <property name="src.dir" location="src" />
     <property name="build.dir" location="${basedir}/classes"/>
     <property name="hadoop.version" value="2.7.1"/>
