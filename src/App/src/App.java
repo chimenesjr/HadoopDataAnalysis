@@ -39,7 +39,16 @@ public class App extends Configured implements Tool {
             conf.setReducerClass(HDA.JobQuantitativo.Reduce.class);
             JobClient.runJob(conf);
 
-            fs.copyToLocalFile(false, diretorioSaida, false, new Path("/usr/local/hadoop/App/data/"));
+            // fs.copyToLocalFile(diretorioSaida, new Path("/usr/local/hadoop/App/data/"));
+
+            Configuration conf = new Configuration();
+            conf.set("fs.defaultFS", "hdfs://localhost:9000/user/hadoop/");
+            FileSystem fs = FileSystem.get(conf);
+            FileStatus[] status = fs.listStatus(diretorioSaida);
+            for(int i=0;i<status.length;i++){
+                System.out.println(status[i].getPath());
+                fs.copyToLocalFile(false, status[i].getPath(), new Path("/usr/local/hadoop/App/data/"));
+            }
 
 
         } catch (Exception e) {
