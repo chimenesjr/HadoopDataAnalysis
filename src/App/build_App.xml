@@ -26,6 +26,6 @@
         </javac>
     </target>
     <target name="makejar" description="wrap the application class in a JAR file"   depends="compile">
-        <jar destfile="${app.jar}" basedir="${build.dir}" includes="IGTI/**"/>
+        <jar destfile="${app.jar}" basedir="${build.dir}" includes="HDA/**"/>
     </target>
 </project>
