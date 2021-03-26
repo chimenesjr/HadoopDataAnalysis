@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.Random;
 import java.text.*;
 
-import App.src.MapIGTI;
+import HDA.MapIGTI;
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
