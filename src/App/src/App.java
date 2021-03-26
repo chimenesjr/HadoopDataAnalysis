@@ -1,4 +1,4 @@
-package App.src;
+package App;
 
 import java.io.*;
 import java.util.*;
