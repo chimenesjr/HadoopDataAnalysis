@@ -21,7 +21,7 @@ public class JobQuantitativo {
 
         public void map(LongWritable key, Text value, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
 
-            var list = Arrays.stream(value.replace("\"", "").split(",")).map(String::trim).toArray(String[]::new);
+            var list = Arrays.stream(value.replace("\"", "").split(","));//.map(String::trim).toArray(String[]::new);
 
             var county = list[3];
             var price = list[4];
