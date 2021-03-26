@@ -25,6 +25,10 @@ public class JobQuantitativo {
             // String[] list = value.toString().split("\\\",\\\"");
             String[] list = value.toString().split("\",\"");
 
+            System.out.println("Quant: " + list.length);
+            System.out.println("Part 3: " + list[3]);
+            System.out.println("Part 4: " + list[4]);
+
             String county = list[3].trim();
             String price = list[4].trim();
     
