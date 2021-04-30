@@ -1,5 +1,10 @@
 package Tests.Job01;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import Tests.Helpers.OutputCollector;
 import Tests.Helpers.Text;
 
@@ -25,7 +30,18 @@ public class Mapping {
 
         System.out.println("Quant: " + list.length);
 
-        String county = list[3].trim();
+        Date date = new Date();
+
+        try {
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(list[0]);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int year = calendar.get(Calendar.YEAR);
+
+        String county = list[3].trim() + "," + Integer.toString(year);
         String price = list[4].trim().replace("�", "");
 
         Text txtChave = new Text();
