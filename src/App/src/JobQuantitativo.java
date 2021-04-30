@@ -9,6 +9,10 @@ import java.util.Random;
 import java.text.*;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.fs.*;
@@ -31,7 +35,17 @@ public class JobQuantitativo {
             System.out.println("Part 3: " + list[3]);
             System.out.println("Part 4: " + list[4]);
 
-            String county = list[3].trim();
+            Date date = new Date();
+            try {
+                date = new SimpleDateFormat("dd/MM/yyyy").parse(list[0]);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            int year = calendar.get(Calendar.YEAR);
+
+            String county = list[3].trim() + "," + Integer.toString(year);
             String price = list[4].trim().replace("?", "");
     
             Text txtChave = new Text();
