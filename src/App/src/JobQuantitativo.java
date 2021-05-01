@@ -37,8 +37,8 @@ public class JobQuantitativo {
 
             Date date = new Date();
             try {
-                System.out.println("*** DATE: " + list[0]);
-                date = new SimpleDateFormat("dd/MM/yyyy").parse(list[0]);
+                System.out.println("*** DATE: " + list[0].replace("\"", ""));
+                date = new SimpleDateFormat("dd/MM/yyyy").parse(list[0].replace("\"", ""));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
