@@ -33,7 +33,7 @@ public class App extends Configured implements Tool {
             FileInputFormat.setInputPaths(conf, diretorioEntrada);
             FileOutputFormat.setOutputPath(conf, diretorioSaida);
             conf.set("mapred.textoutputformat.separator", ",");
-            conf.set("mapreduce.output.basename", "JobQuantitativo");
+            conf.set("mapred.output.basename", "JobQuantitativo");
             
             conf.setOutputKeyClass(Text.class);
             conf.setOutputValueClass(Text.class);
