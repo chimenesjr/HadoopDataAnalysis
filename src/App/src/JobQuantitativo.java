@@ -54,11 +54,10 @@ public class JobQuantitativo {
     
             txtChave.set(county);
             txtValor.set(price);
-
-            System.out.print("MAP: ********* Key: " + txtChave.toString() + "************** Value: " + txtValor.toString());
     
+            System.out.print("MAP: ********* Key: " + county.toString() + "************** Value: " + price.toString());
             output.collect(txtChave, txtValor);
-
+            
             System.out.println("***************** JOB QUANTITATIVO MAP FINISHED ***************");
 
         }
@@ -77,7 +76,7 @@ public class JobQuantitativo {
             value.set(Integer.toString(count));
             output.collect(key, value);
 
-            System.out.print("REDUCE: ********* Key: " + key.toString() + "************** Value: " + value.toString());
+            System.out.print("REDUCE: ********* Key: " + key.getData() + "************** Value: " + Integer.toString(count));
 
             System.out.println("***************** JOB QUANTITATIVO REDUCE FINISHED ***************");
 

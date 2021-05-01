@@ -50,6 +50,8 @@ public class Mapping {
         txtChave.set(county);
         txtValor.set(price);
 
+        System.out.println(txtChave.toString());
+
         output.collect(txtChave, txtValor);
     }
 }
