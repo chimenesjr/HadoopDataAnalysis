@@ -19,6 +19,7 @@ import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.*;
+import org.w3c.dom.Text;
 
 public class JobQuantitativo {
 
@@ -53,6 +54,8 @@ public class JobQuantitativo {
     
             txtChave.set(county);
             txtValor.set(price);
+
+            System.out.print("MAP: ********* Key: " + txtChave.toString() + "************** Value: " + txtValor.toString());
     
             output.collect(txtChave, txtValor);
 
@@ -73,6 +76,8 @@ public class JobQuantitativo {
     
             value.set(Integer.toString(count));
             output.collect(key, value);
+
+            System.out.print("REDUCE: ********* Key: " + key.toString() + "************** Value: " + value.toString());
 
             System.out.println("***************** JOB QUANTITATIVO REDUCE FINISHED ***************");
 
