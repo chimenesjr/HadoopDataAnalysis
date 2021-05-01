@@ -33,6 +33,7 @@ public class App extends Configured implements Tool {
             FileInputFormat.setInputPaths(conf, diretorioEntrada);
             FileOutputFormat.setOutputPath(conf, diretorioSaida);
 
+            conf.set("mapred.textoutputformat.separatorText", ",");
             conf.setOutputKeyClass(Text.class);
             conf.setOutputValueClass(Text.class);
             conf.setMapperClass(HDA.JobQuantitativo.Map.class);
