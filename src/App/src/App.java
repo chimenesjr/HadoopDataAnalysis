@@ -33,7 +33,6 @@ public class App extends Configured implements Tool {
             FileInputFormat.setInputPaths(conf, diretorioEntrada);
             FileOutputFormat.setOutputPath(conf, diretorioSaida);
             conf.set("mapred.textoutputformat.separator", ",");
-            conf.set("mapreduce.output.basename", "JobQuantitativo");
             
             conf.setOutputKeyClass(Text.class);
             conf.setOutputValueClass(Text.class);
@@ -46,7 +45,7 @@ public class App extends Configured implements Tool {
             FileStatus[] status = fs2.listStatus(diretorioSaida);
             for(int i=0; i < status.length; i++) {
                 System.out.println(status[i].getPath());
-                fs2.copyToLocalFile(false, status[i].getPath(), new Path("/usr/local/hadoop/App/data/"));
+                fs2.copyToLocalFile(false, status[i].getPath(), new Path("/usr/local/hadoop/App/data/JobQuantitativo"));
             }
 
 
