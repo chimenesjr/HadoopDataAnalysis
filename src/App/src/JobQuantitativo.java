@@ -45,7 +45,7 @@ public class JobQuantitativo {
             calendar.setTime(date);
             int year = calendar.get(Calendar.YEAR);
 
-            String county = list[3].trim() + "-" + Integer.toString(year);
+            String county = list[3].trim() + Integer.toString(year);
             String price = list[4].trim().replace("?", "");
     
             Text txtChave = new Text();
