@@ -10,7 +10,7 @@ object MPRApp {
       
       val arquivo = sc.textFile("file:///usr/local/HadoopDataAnalysis/spark-igti/arquivoBigData.txt")    
       
-      val clientes_vendas = arquivo.map(linha => usr/local/(linha.substring(58, 61).toInt, linha.substring(76, 84).toDouble)) 
+      val clientes_vendas = arquivo.map(linha => (linha.substring(58, 61).toInt, linha.substring(76, 84).toDouble)) 
       val grupo = clientes_vendas.reduceByKey((x, y) => (x+))
       val grupo_ord = grupo.sortByKey()  
       
