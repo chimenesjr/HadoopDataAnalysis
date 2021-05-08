@@ -14,7 +14,9 @@ object MPRApp {
       // val grupo_ord = grupo.sortByKey()  
       
       // grupo_ord.saveAsTextFile("hdfs://localhost:54310/entrada/resultado");
-
-      Console.printf("First scala test")
+      
+      val input = sc.textFile("file://~/HadoopDataAnalysis/spark-igti/PPR-ALL.csv")
+      val filter = input.take(15)
+      filter.saveAsTextFile("file://~/HadoopDataAnalysis/spark-igti/output.csv")
    }
 }
