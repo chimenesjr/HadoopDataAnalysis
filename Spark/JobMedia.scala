@@ -1,5 +1,5 @@
 
-package JobMedia
+package ReportJobs
 
 import org.apache.spark.{SparkContext, SparkConf}
 // import TraitJob

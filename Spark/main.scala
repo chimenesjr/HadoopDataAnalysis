@@ -2,7 +2,6 @@
 package ReportJobs
 
 import org.apache.spark.{SparkContext, SparkConf}
-import JobMedia
 
 object ReportJobs {
     def main(args: Array[String]) {   
