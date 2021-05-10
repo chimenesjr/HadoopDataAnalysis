@@ -16,7 +16,8 @@ object MPRApp {
       
       grupo_ord.saveAsTextFile("file:///usr/local/HadoopDataAnalysis/spark-igti/resultado");
       
-      val input = sc.textFile("file:///usr/local/HadoopDataAnalysis/spark-igti/PPR-ALL.csv")
-      val filter = input.take(15)
+      // spark = SparckSession
+      // val input = spark.read.csv("file:///usr/local/HadoopDataAnalysis/spark-igti/PPR-ALL.csv")
+      // input.printSchema
    }
 }
