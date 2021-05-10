@@ -10,6 +10,6 @@ object ReportJobs {
         var sc = new SparkContext(conf)
 
         var jobmedia = new JobMedia()
-        // jobmedia.Start(conf, sc)
+        jobmedia.Start(conf, sc)
     }
 }

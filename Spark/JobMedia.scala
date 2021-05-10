@@ -2,10 +2,9 @@
 package ReportJobs
 
 import org.apache.spark.{SparkContext, SparkConf}
-// import TraitJob
 
-class JobMedia {
+class JobMedia extends TraitJob {
     def Start(conf: SparkConf, sc: SparkContext) {
-
+        
     }
 }
