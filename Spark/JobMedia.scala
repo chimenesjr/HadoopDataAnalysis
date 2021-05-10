@@ -6,6 +6,6 @@ import org.apache.spark.rdd.RDD
 
 class JobMedia() {
     def Start(conf: SparkConf, sc: SparkContext, fileRdd: RDD[String]) {
-
+        println(fileRdd.count)
     }
 }
