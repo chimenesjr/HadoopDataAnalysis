@@ -10,7 +10,7 @@ object ReportJobs {
         var sc = new SparkContext(conf)
         var fileRdd = sc.textFile("file:///usr/local/PPR-ALL.csv")
 
-        var jobmedia = new JobMedia(conf, sc)
+        var jobmedia = new JobMedia()
         jobmedia.Start(conf, sc, fileRdd)
     }
 }
