@@ -9,7 +9,7 @@ object ReportJobs {
         var conf = new SparkConf().setAppName("Report Jobs")
         var sc = new SparkContext(conf)
 
-        var jobmedia = new JobMedia()
-        jobmedia.Start(conf, sc)
+        var jobmedia = new JobMedia(conf, sc)
+        jobmedia.Start()
     }
 }
