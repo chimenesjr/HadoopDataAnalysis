@@ -20,7 +20,6 @@ object ReportJobs {
             .appName("Spark SQL basic example")
             .config("spark.some.config.option", "some-value")
             .getOrCreate()
-        }
 
         val input = spark.read.csv("file:///usr/local/PPR-ALL.csv")
         println(input.printSchema)
