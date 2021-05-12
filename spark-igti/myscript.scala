@@ -2,6 +2,7 @@
 package IGTI
 
 import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.sql.SparkSession
 
 object MPRApp {
    def main(args: Array[String]) {   
@@ -16,8 +17,14 @@ object MPRApp {
       
       grupo_ord.saveAsTextFile("file:///usr/local/HadoopDataAnalysis/spark-igti/resultado");
       
-      // spark = SparckSession
-      // val input = spark.read.csv("file:///usr/local/HadoopDataAnalysis/spark-igti/PPR-ALL.csv")
-      // input.printSchema
+      val spark = SparkSession
+         .builder()
+         .appName("Spark SQL basic example")
+         .config("spark.some.config.option", "some-value")
+         .getOrCreate()
+      }
+
+      val input = spark.read.csv("file:///usr/local/PPR-ALL.csv")
+      input.printSchema
    }
 }
