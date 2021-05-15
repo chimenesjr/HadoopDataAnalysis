@@ -2,7 +2,7 @@ from jobmedia import *
 
 def main():
     print("test-main")
-    dataFile = "file:///usr/local/PPR-ALL.csv"  # Should be some file on your system
+    dataFile = "file:///usr/local/PPR-ALL.csv"
     
     job = jobmediaclass(dataFile)
     job.start()
