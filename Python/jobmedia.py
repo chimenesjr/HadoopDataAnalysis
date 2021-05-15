@@ -1,4 +1,4 @@
 
 class jobmediaclass:
-    def start():
+    def start(self):
         print("test-jobmedia")
