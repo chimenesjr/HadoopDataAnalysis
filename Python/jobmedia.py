@@ -11,7 +11,7 @@ class jobmediaclass:
 
     def start(self):
         spark = SparkSession.builder.appName("SimpleApp").getOrCreate()
-        rdd = spark.sparkContext.textFile(self.file)
+        rdd = spark.sparkContext.textFile(self.file).repartition(1)
 
         line = rdd.map(lambda x: x[1:-1].split("\",\"")) 
         #['01/01/2010', '5 Braemor Drive, Churchtown, Co.Dublin', '', 'Dublin', '343,000.00', 'No', 'No', 'Second-Hand Dwelling house /Apartment', '']
