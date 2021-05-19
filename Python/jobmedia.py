@@ -16,7 +16,7 @@ class jobmediaclass:
         line = rdd.map(lambda x: x[1:-1].split("\",\""))
         #['01/01/2010', '5 Braemor Drive, Churchtown, Co.Dublin', '', 'Dublin', '343,000.00', 'No', 'No', 'Second-Hand Dwelling house /Apartment', '']
         
-        groupedByCity = line.map(lambda x: (x[0][-4:] + ":" + x[3], x[4].replace(",","") + ":1")) 
+        groupedByCity = line.map(lambda x: (x[0][-4:] + ":" + x[3], x[4].replace(",","") + ":1"))
         #('2010:Dublin', '343000.00:1')
         
         sum = groupedByCity.reduceByKey(lambda a, b: str(float(a.split(":")[0])+float(b.split(":")[0])) + ":" + str(int(a.split(":")[1])+int(b.split(":")[1])))
@@ -39,6 +39,10 @@ class jobmediaclass:
 
             avg.append(curr)
             i += 1
+        
+        final = spark.sparkContext.parallelize(avg)
+        final.saveAsTextFile("file:///usr/local/final")
+        
 
 
 class avgResult:
