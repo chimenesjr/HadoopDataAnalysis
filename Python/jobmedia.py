@@ -39,9 +39,7 @@ class jobmediaclass:
 
             avg.append(curr)
 
-            print(curr[1])
             i += 1
         
         finalResult = spark.sparkContext.parallelize(avg)
-        print(finalResult.collect())
         finalResult.saveAsTextFile("file:///usr/local/final")
