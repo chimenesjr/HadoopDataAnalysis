@@ -42,8 +42,9 @@ class jobmediaclass:
             print(curr.city)
             i += 1
         
-        print("Starting save file")
+        
         final = spark.sparkContext.parallelize(avg)
+        print("Data imported into RDD")
         final.saveAsTextFile("file:///usr/local/final")
         
 
