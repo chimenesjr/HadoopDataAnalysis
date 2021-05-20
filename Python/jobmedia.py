@@ -43,9 +43,9 @@ class jobmediaclass:
             i += 1
         
         
-        final = spark.sparkContext.parallelize(avg)
-        print("Data imported into RDD")
-        final.saveAsTextFile("file:///usr/local/final")
+        finalResult = spark.sparkContext.parallelize(avg)
+        print(finalResult.collect())
+        finalResult.saveAsTextFile("file:///usr/local/final")
         
 
 
