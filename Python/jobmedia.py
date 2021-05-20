@@ -27,7 +27,7 @@ class jobmediaclass:
 
         header = [('Year', 'City', 'Avg')]
         schema = spark.sparkContext.parallelize(header)
-        final = schema.union(result)
+        final = schema.union(result).repartition(1)
         
         resultLines = final.map(lambda line: str(line).replace("'", "")[1:-1])
         resultLines.saveAsTextFile("file:///usr/local/jobmedia")
@@ -50,7 +50,7 @@ class jobmediaclass:
         
         header = [('Year', 'City', 'Avg')]
         schema = spark.sparkContext.parallelize(header)
-        final = schema.union(finalResult)
+        final = schema.union(finalResult).repartition(1)
         
         finalResultLines = final.map(lambda line: str(line).replace("'", "")[1:-1])
         finalResultLines.saveAsTextFile("file:///usr/local/final")
