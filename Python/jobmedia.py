@@ -25,7 +25,11 @@ class jobmediaclass:
         result = sum.map(lambda x: (int(x[0].split(":")[0]), x[0].split(":")[1], float(x[1].split(":")[0])/int(x[1].split(":")[1])))
         #('2010', 'Dublin', 332967.37502378575)
 
-        resultLines = result.map(lambda line: str(line).replace("'", "")[1:-1])
+        header = [('Year', 'City', 'Avg')]
+        schema = spark.sparkContext.parallelize(header)
+        final = schema.union(result)
+        
+        resultLines = final.map(lambda line: str(line).replace("'", "")[1:-1])
         resultLines.saveAsTextFile("file:///usr/local/jobmedia")
 
         rdd2010 = result.sortBy(lambda x: x[1]).filter(lambda x: x[0] == 2010).collect()
@@ -43,7 +47,12 @@ class jobmediaclass:
             i += 1
         
         finalResult = spark.sparkContext.parallelize(avg)
-        finalResultLines = finalResult.map(lambda line: str(line).replace("'", "")[1:-1])
+        
+        header = [('Year', 'City', 'Avg')]
+        schema = spark.sparkContext.parallelize(header)
+        final = schema.union(finalResult)
+        
+        finalResultLines = final.map(lambda line: str(line).replace("'", "")[1:-1])
         finalResultLines.saveAsTextFile("file:///usr/local/final")
 
 
