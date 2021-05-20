@@ -38,8 +38,11 @@ class jobmediaclass:
             curr.diff = rdd2021[i][2] - rdd2010[i][2]
 
             avg.append(curr)
+
+            print(curr.city)
             i += 1
         
+        print("Starting save file")
         final = spark.sparkContext.parallelize(avg)
         final.saveAsTextFile("file:///usr/local/final")
         
