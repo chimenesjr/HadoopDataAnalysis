@@ -34,22 +34,14 @@ class jobmediaclass:
         avg = []
         i = 0
         while i < len(rdd2010):
-            curr = avgResult(rdd2010[i][0], rdd2010[i][1])
-            curr.diff = rdd2021[i][2] - rdd2010[i][2]
+            diff = rdd2021[i][2] - rdd2010[i][2]
+            curr = (rdd2010[i][0], rdd2010[i][1], diff)
 
             avg.append(curr)
 
-            print(curr.city)
+            print(curr[1])
             i += 1
-        
         
         finalResult = spark.sparkContext.parallelize(avg)
         print(finalResult.collect())
         finalResult.saveAsTextFile("file:///usr/local/final")
-        
-
-
-class avgResult:
-    def __init__(self, year, city):
-        self.year = year
-        self.city = city
