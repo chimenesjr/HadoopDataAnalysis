@@ -26,7 +26,7 @@ class jobgapclass:
         i = 0
         gap = []
 
-        while i < len(max):
+        while i < max.count():
             currGap = max[i] - min[i]
 
             gap.append(currGap)
