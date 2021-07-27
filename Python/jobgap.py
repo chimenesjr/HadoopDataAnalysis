@@ -19,17 +19,18 @@ class jobgapclass:
         groupedByCity = line.map(lambda x: (x[3], x[4].replace(",","")))
         # [('Dublin', '343000.00')]
 
-        min = groupedByCity.reduceByKey(lambda a, b: float(a) if float(a) < float(b) else float(b))
+        min = groupedByCity.reduceByKey(lambda a, b: float(a) if float(a) < float(b) else float(b)).collect()
 
-        max = groupedByCity.reduceByKey(lambda a, b: float(a) if float(a) > float(b) else float(b))
+        max = groupedByCity.reduceByKey(lambda a, b: float(a) if float(a) > float(b) else float(b)).collect()
 
         i = 0
         gap = []
 
-        while i < max.count():
-            currGap = max[i] - min[i]
+        while i < len(max):
+            currGap = max[i][1] - min[i][1]
+            curr = (max[i][0], min[i][1], max[i][1], currGap)
 
-            gap.append(currGap)
+            gap.append(curr)
 
             i += 1
 
